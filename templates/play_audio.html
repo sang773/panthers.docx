@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Result - Neon Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Audio Result</h1>
+        <p class="subtitle">Listen to your extracted text</p>
+    </header>
+
+    <main>
+        <section class="audio-section">
+            <div class="audio-box">
+                <audio controls>
+                    <source src="{{ url_for('static', filename='output.mp3') }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <form action="{{ url_for('retry') }}" method="post">
+                <button type="submit" class="btn neon-btn">Try Another</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made by panthers.docx | Powered by xAI | © 2025</p>
+    </footer>
+</body>
+</html>

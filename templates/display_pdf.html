@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Result - Neon Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>PDF Result</h1>
+        <p class="subtitle">Your image has been converted to PDF</p>
+    </header>
+
+    <main>
+        <section class="result-section">
+            <div class="result-box">
+                <embed src="{{ url_for('static', filename='output.pdf') }}" type="application/pdf" width="100%" height="600px">
+            </div>
+            <div class="button-group">
+                <form action="{{ url_for('text_to_speech') }}" method="post">
+                    <button type="submit" class="btn neon-btn secondary">Convert to Audio</button>
+                </form>
+                <form action="{{ url_for('retry') }}" method="post">
+                    <button type="submit" class="btn neon-btn">Try Another</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made by panthers.docx | Powered by xAI | © 2025</p>
+    </footer>
+</body>
+</html>

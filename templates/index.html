@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Neon Converter</h1>
+        <p class="subtitle">Transform your images into PDF or audio with a futuristic twist</p>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <h2>Upload Your Image</h2>
+            <form action="{{ url_for('upload_image') }}" method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+                <div class="file-input-wrapper">
+                    <input type="file" name="file" id="file" accept="image/*" required onchange="previewImage(event)">
+                    <label for="file">Select Image</label>
+                </div>
+                <div class="preview-box" id="previewBox">
+                    <img id="imagePreview" src="#" alt="Image Preview" style="display: none;">
+                </div>
+                <button type="submit" class="btn neon-btn">Convert Now</button>
+            </form>
+            <div class="progress-bar" id="progressBar" style="display: none;">
+                <div class="progress-fill"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made by panthers.docx | Powered by xAI | © 2025</p>
+    </footer>
+
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('imagePreview');
+            const file = event.target.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+            }
+        }
+
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            document.getElementById('progressBar').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
